@@ -15,7 +15,8 @@
     "permissions":
     [
         "http://relaxound.tk/",
-        "cookies"
+        "cookies",
+        "tabs"
     ],
 
     "content_scripts":

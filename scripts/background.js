@@ -23,6 +23,8 @@ var initialize = function ( details )
         }
     );
 
+    removeDupes();
+
 };
 
 var processMessage = function ( message , sender , callback )
@@ -87,6 +89,27 @@ var processClick = function ( tab )
 
 };
 
+var processTabUpdate = function ( tabId , change , tab )
+{
+
+    // Process only url changes
+    if ( ! change.url )
+    {
+        return;
+    }
+
+    // Process only relaxound tabs
+    url = /http\:\/\/relaxound\.tk\/*/;
+    if ( ! tab.url.match(url) )
+    {
+        return;
+    }
+
+    // Clear duplicating tabs
+    removeDupes();
+
+}
+
 var openSite = function()
 {
 
@@ -117,11 +140,50 @@ var updateIcon = function ( mute )
 
 };
 
+var removeDupes = function()
+{
+
+    // An extension tabs query
+    var tabsQuery = { url: 'http://relaxound.tk/*' };
+
+    // An mute toggle routine
+    var removeDupes = function ( tabs )
+    {
+
+        // There are no dupes
+        if ( tabs.length < 2 )
+        {
+            return;
+        }
+
+        // Hold the first tab
+        tabs.shift();
+
+        // Remove the others
+        $(tabs).each
+        (
+            function()
+            {
+                var tabId = this.id;
+                chrome.tabs.remove(tabId);
+            }
+        );
+
+    };
+
+    // Find extension tabs and remove dupes
+    chrome.tabs.query(tabsQuery,removeDupes);
+
+}
+
 // Initialize the extension
 chrome.runtime.onInstalled.addListener(initialize);
 
 // Listen to the extension messages
 chrome.runtime.onMessage.addListener(processMessage);
+
+// Listen to new tabs being opened
+chrome.tabs.onUpdated.addListener(processTabUpdate);
 
 // Listen to clicks on the extension icon
 chrome.browserAction.onClicked.addListener(processClick);
