@@ -12,6 +12,8 @@
 
     "author": "Nikolay Oleynikov",
 
+    "default_locale": "en",
+
     "permissions":
     [
         "http://relaxound.tk/",
