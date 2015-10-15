@@ -16,7 +16,7 @@ var processMessage = function ( message , sender , callback )
 
     // Send a message
     var message = { type: messageType };
-    var messageOrigin = 'http://relaxound.tk';
+    var messageOrigin = 'https://relaxound.kolyunya.me/';
     window.postMessage(message,messageOrigin);
 
 }

@@ -5,7 +5,7 @@ var initialize = function ( details )
     chrome.cookies.get
     (
         {
-            url: 'http://relaxound.tk/',
+            url: 'https://relaxound.kolyunya.me/',
             name: 'SOUND_MUTED',
         },
         function ( cookie )
@@ -50,7 +50,7 @@ var processClick = function ( tab )
 {
 
     // An extension tabs query
-    var tabsQuery = { url: 'http://relaxound.tk/*' };
+    var tabsQuery = { url: 'https://relaxound.kolyunya.me/*' };
 
     // An mute toggle routine
     var toggleMute = function ( tabs )
@@ -99,7 +99,7 @@ var processTabUpdate = function ( tabId , change , tab )
     }
 
     // Process only relaxound tabs
-    url = /http\:\/\/relaxound\.tk\/*/;
+    url = /https\:\/\/relaxound\.kolyunya\.me\/*/;
     if ( ! tab.url.match(url) )
     {
         return;
@@ -116,7 +116,7 @@ var openSite = function()
     chrome.tabs.create
     (
         {
-            url: 'http://relaxound.tk/',
+            url: 'https://relaxound.kolyunya.me/',
             active: false,
             selected: false,
             pinned: true,
@@ -144,7 +144,7 @@ var removeDupes = function()
 {
 
     // An extension tabs query
-    var tabsQuery = { url: 'http://relaxound.tk/*' };
+    var tabsQuery = { url: 'https://relaxound.kolyunya.me/*' };
 
     // An mute toggle routine
     var removeDupes = function ( tabs )

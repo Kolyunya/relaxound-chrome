@@ -8,15 +8,13 @@
 
     "description": "Relaxound - background sound generator for work and relaxation",
 
-    "version": "1.4",
+    "version": "1.5",
 
     "author": "Nikolay Oleynikov",
 
-    "default_locale": "en",
-
     "permissions":
     [
-        "http://relaxound.tk/",
+        "https://relaxound.kolyunya.me/",
         "cookies",
         "tabs"
     ],
@@ -26,7 +24,7 @@
         {
             "matches":
             [
-                "http://relaxound.tk/*"
+                "https://relaxound.kolyunya.me/*"
             ],
             "js":
             [
